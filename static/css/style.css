@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    /* overflow: hidden; */
+}
+
+.home-container {
+    margin-top: 10%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-title {
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+
+.login-container {
+    margin-top: 5%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign-up-btn-span {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon {
+    height: 40px;
+}
+
+.main {
+    height: 100vh;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.home-nav {
+    position: fixed;
+
+    /* background-color: aqua; */
+
+    width: 5%;
+    height: 100%;
+}
+
+.todo-cards {
+    margin-left: 10%;
+    margin-top: 25px;
+    margin-right: 2rem;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+
+    flex-wrap: wrap;
+}
+
+.todo {
+    height: 250px;
+    width: 250px;
+
+    background-color: rgb(195, 229, 248);
+    border-radius: 10px;
+}
+
+.title-label {
+    width: 100%;
+    text-align: center;
+    font-size: 25px;
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Sign Up</title>
+</head>
+<body>
+    <div class="login-container">
+        <h1 style="margin-bottom: 2rem;">Sign Up</h1>
+
+        <!-- Username input -->
+        <div class="input-group input-group-sm mb-3"
+             style="width: 350px;">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm" 
+                      style="width: 80px; justify-content: center;">Username</span>
+            </div>
+            <input type="text" 
+                   class="form-control" 
+                   aria-label="Sizing example input" 
+                   aria-describedby="inputGroup-sizing-sm"
+                   id="usernameSignUpInput">
+        </div>
+
+        <!-- Email input -->
+        <div class="input-group input-group-sm mb-3"
+             style="width: 350px;">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm" 
+                      style="width: 80px; justify-content: center;">Email</span>
+            </div>
+            <input type="text" 
+                   class="form-control" 
+                   aria-label="Sizing example input" 
+                   aria-describedby="inputGroup-sizing-sm"
+                   id="emailInput">
+        </div>
+
+        <!-- Password input -->
+        <div class="input-group input-group-sm mb-3"
+             style="width: 350px;">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm" 
+                      style="width: 80px; justify-content: center;">Password</span>
+            </div>
+            <input type="password"
+                   class="form-control" 
+                   aria-label="Sizing example input" 
+                   aria-describedby="inputGroup-sizing-sm"
+                   id="passwordSignUpInput">
+        </div>
+
+        <!-- Confirm password input -->
+        <div class="input-group input-group-sm mb-3"
+             style="width: 350px;">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroup-sizing-sm" 
+                      style="width: 80px; justify-content: center;">Confirm</span>
+            </div>
+            <input type="password"
+                   class="form-control" 
+                   aria-label="Sizing example input" 
+                   aria-describedby="inputGroup-sizing-sm"
+                   id="confirmPasswordSignUpInput">
+        </div>
+
+        <!-- Buttons -->
+        <span class="sign-up-btn-span">
+            <button type="button" class="btn btn-primary" style="width: 100px;" id="signUpBtn">Sign Up</button>
+            <button type="button" class="btn btn-primary" id="loginBtn">Already have an account? Login</button>
+        </span>
+
+        <p style="margin-top: 1rem; color: red;" id="errorMsgP"></p>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/sign_up.js') }}"></script> 
+</body>
+</html>
