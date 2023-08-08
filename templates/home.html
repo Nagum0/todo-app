@@ -19,35 +19,28 @@
         <!-- Todo cards -->
         <div class="todo-cards">
             {% for i in card_list %}
-                <div class="card" style="width: 18rem; height: 18rem;">
-                    <div class="card-body" style="margin-top: 1rem;">
-                        <h5 class="card-title">{{ i[0] }}</h5>
-                        <p class="card-text">{{ i[1] }}</p>
+                {% if i[2] != "1" %}
+                    <div class="card" style="width: 18rem; height: 18rem;">
+                        <div class="card-body" style="margin-top: 1rem;">
+                            <h5 class="card-title">{{ i[0] }}</h5>
+                            <p class="card-text">{{ i[1] }}</p>
 
-                        <!-- Confirm button -->
-                        {% if i[2] != "1" %}
+                            <!-- Confirm button -->
                             <button type="button" 
                                     class="btn btn-primary confirm-btn"
                                     style="margin-top: 4rem;">
                                     Complete
                             </button>
-                        {% else %}
-                            <button type="button" 
-                                    class="btn btn-primary confirm-btn" 
-                                    style="margin-top: 4rem;"
-                                    disabled>
-                                    Completed
-                            </button>
-                        {% endif %}
 
-                        <!-- Delete button -->
-                        <button type="button" 
-                                class="btn btn-danger delete-btn" 
-                                style="margin-top: 4rem;">
-                                Delete
-                        </button>
+                            <!-- Delete button -->
+                            <button type="button" 
+                                    class="btn btn-danger delete-btn" 
+                                    style="margin-top: 4rem;">
+                                    Delete
+                            </button>
+                        </div>
                     </div>
-                </div>
+                {% endif %}
             {% endfor %}
 
             <button type="button" 
