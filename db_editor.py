@@ -157,7 +157,3 @@ class DBConn:
             print("Card created...")
         except Exception as e:
             print(e)
-    
-if __name__ == "__main__":
-    DATABASE_CONN = DBConn("bhwkpirbrqy17bkaclxz-mysql.services.clever-cloud.com", "ujfecpzghum2bsdt", "qGxkGCeUQbz1YNgzg80K", "bhwkpirbrqy17bkaclxz")
-    DATABASE_CONN.get_table_data("zeki")
