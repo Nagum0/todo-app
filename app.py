@@ -94,15 +94,17 @@ def home():
                 DATABASE_CONN.delete_todo_card(session["user"], data["card_title"])
                 session["card_data"] = DATABASE_CONN.get_table_data(session["user"])
                 return jsonify({ "msg": "deleted" })
+            
             # Confirm functionality
             elif data["cmd"] == "confirm":
                 DATABASE_CONN.confirm_todo_card(session["user"], data["card_title"])
                 session["card_data"] = DATABASE_CONN.get_table_data(session["user"])
                 return jsonify({ "msg": "confirmed" })
+            
             # Create new card
             elif data["cmd"] == "new_card":
                 DATABASE_CONN.create_new_card(session["user"], data["card_title"], data["card_body"])
-                return jsonify({ "msg": "new card created" })
+                return redirect(url_for("home"))
             else:
                 return jsonify({ "msg": "error while requesting" })
         else:

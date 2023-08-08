@@ -114,9 +114,19 @@ save_card_btn.addEventListener("click", () => {
         },
         body: JSON.stringify({ "cmd": "new_card", "card_title": card_title, "card_body":  card_body })
     })
-    .then((res) => res.json())
+    .then((res) => {
+        if (res.redirected) {
+            window.location.href = res.url
+        }
+        else {
+            res.json()
+        }
+    })
     .then((data) => console.log(data))
     .catch(err => console.log(err))
+
+    main_container.style.opacity = 1
+    add_new_card_temp.style.display = "none";
 })
 
 // Close add card panel
