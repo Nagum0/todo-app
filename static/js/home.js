@@ -71,10 +71,20 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 })
 
-/* Navbar */
+// --------------------------- #
+//           NAVBAR            #
+// --------------------------- #
 const logout_btn = document.getElementById("logoutBtn")
 
 logout_btn.addEventListener("click", () => {
     window.location.href = "/logout"
 })
 
+// --------------------------- #
+//           CONFIRM           #
+// --------------------------- #
+const complete_btn = document.getElementById("completedBtn")
+
+complete_btn.addEventListener("click", () => {
+    window.location.href = "/completed"
+})

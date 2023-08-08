@@ -105,5 +105,12 @@ def home():
     else:
         return redirect(url_for("login"))
 
+# --------------------------- #
+#          COMPLETED          #
+# --------------------------- #
+@app.route("/completed")
+def completed():
+    return "<h1>Completed</h1>"
+
 if __name__ == "__main__":
     app.run(debug=True)
