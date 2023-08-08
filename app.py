@@ -85,6 +85,7 @@ def home():
         DATABASE_CONN.create_conn()
         session["card_data"] = DATABASE_CONN.get_table_data(session["user"])
 
+        # On POST request
         if request.method == "POST":
             data = request.get_json()
 
@@ -97,7 +98,11 @@ def home():
             elif data["cmd"] == "confirm":
                 DATABASE_CONN.confirm_todo_card(session["user"], data["card_title"])
                 session["card_data"] = DATABASE_CONN.get_table_data(session["user"])
-                return jsonify({ "msg": "Confirmed" })
+                return jsonify({ "msg": "confirmed" })
+            # Create new card
+            elif data["cmd"] == "new_card":
+                DATABASE_CONN.create_new_card(session["user"], data["card_title"], data["card_body"])
+                return jsonify({ "msg": "new card created" })
             else:
                 return jsonify({ "msg": "error while requesting" })
         else:

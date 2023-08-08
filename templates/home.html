@@ -9,7 +9,7 @@
     <title>Home</title>
 </head>
 <body>
-    <div class="main">
+    <div class="main" id="mainCont">
         <!-- Navbar -->
         <nav class="home-nav">
             <button type="button" class="btn btn-primary icon" id="completedBtn">Completed</button>
@@ -42,13 +42,42 @@
                     </div>
                 {% endif %}
             {% endfor %}
-
+            
+            <!-- New card button -->
             <button type="button" 
                     class="btn btn-primary"
-                    style="width: 18rem; height: 18rem; font-size: 50px; display: flex; justify-content: center; align-items: center;">
+                    style="width: 18rem; height: 18rem; font-size: 50px; display: flex; justify-content: center; align-items: center;"
+                    id="newCardBtn">
                     NEW CARD <br> +
             </button>
         </div>
+    </div>
+
+    <!-- New card popup -->
+    <div class="add_new_card" id="addNewCardTemp">
+        <!-- Title -->
+        <div class="input-group mb-3"
+             style="margin: 2rem 10%; width: 80%;">
+            <span class="input-group-text" id="basic-addon1">Title</span>
+            <input type="text" 
+                   class="form-control" 
+                   placeholder="Title..."
+                   aria-label="Username" 
+                   aria-describedby="basic-addon1"
+                   id="cardTitleInput">
+        </div>
+
+        <!-- Textarea -->
+        <div class="input-group"
+             style="margin: 0 10%; width: 80%; height: 150px;">
+            <textarea class="form-control" aria-label="With textarea" id="cardBodyInput"></textarea>
+        </div>
+
+        <!-- Buttons -->
+        <span style="display: flex; justify-content: center; margin-top: 2rem; gap: 25px;">
+            <button type="button" class="btn btn-primary" id="saveCardBtn">Save</button>
+            <button type="button" class="btn btn-danger" id="closeCardBtn">Close</button>
+        </span>
     </div>
 
     <script src="{{ url_for('static', filename='js/home.js') }}" defer></script>
