@@ -111,7 +111,7 @@ def home():
 @app.route("/completed")
 def completed():
     if "user" in session:
-        return render_template("completed.html", completed_card_list = [("Test", "Test body...")])
+        return render_template("completed.html", completed_card_list = DATABASE_CONN.get_completed_cards(session["user"]))
     else:
         return redirect(url_for("login"))
 
