@@ -88,10 +88,16 @@ def home():
         if request.method == "POST":
             data = request.get_json()
 
+            # Delete functionality
             if data["cmd"] == "delete":
                 DATABASE_CONN.delete_todo_card(session["user"], data["card_title"])
                 session["card_data"] = DATABASE_CONN.get_table_data(session["user"])
                 return jsonify({ "msg": "deleted" })
+            # Confirm functionality
+            elif data["cmd"] == "confirm":
+                DATABASE_CONN.confirm_todo_card(session["user"], data["card_title"])
+                session["card_data"] = DATABASE_CONN.get_table_data(session["user"])
+                return jsonify({ "msg": "confirmed" })
             else:
                 return jsonify({ "msg": "error while requesting" })
         else:
