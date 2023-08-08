@@ -18,14 +18,14 @@ document.addEventListener("DOMContentLoaded", () => {
             // --------------------------- #
             const card_title = card.querySelector(".card-body").querySelector("h5").innerText
             
-            let cmd = { "cmd": "delete", "card_title": card_title }
+            let msg_data = { "cmd": "delete", "card_title": card_title }
 
             fetch("/home", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(cmd)
+                body: JSON.stringify(msg_data)
             })
             .then((res) => {
                 return res.json()
@@ -51,7 +51,16 @@ document.addEventListener("DOMContentLoaded", () => {
             //           BACKEND           #
             // --------------------------- #
             const card_title = card.querySelector(".card-body").querySelector("h5").innerText
-            console.log(card_title)
+            
+            let msg_data = { "cmd": "confirm", "card_title": card_title }
+
+            fetch("/home", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(msg_data)
+            })
         })
     })
 })
