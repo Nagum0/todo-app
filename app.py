@@ -88,14 +88,30 @@ def home():
         if request.method == "POST":
             data = request.get_json()
 
+            # Delete functionality
             if data["cmd"] == "delete":
                 DATABASE_CONN.delete_todo_card(session["user"], data["card_title"])
                 session["card_data"] = DATABASE_CONN.get_table_data(session["user"])
                 return jsonify({ "msg": "deleted" })
+            # Confirm functionality
+            elif data["cmd"] == "confirm":
+                DATABASE_CONN.confirm_todo_card(session["user"], data["card_title"])
+                session["card_data"] = DATABASE_CONN.get_table_data(session["user"])
+                return jsonify({ "msg": "Confirmed" })
             else:
                 return jsonify({ "msg": "error while requesting" })
         else:
             return render_template("home.html", session=session, card_list=session["card_data"])
+    else:
+        return redirect(url_for("login"))
+
+# --------------------------- #
+#          COMPLETED          #
+# --------------------------- #
+@app.route("/completed")
+def completed():
+    if "user" in session:
+        return render_template("completed.html", completed_card_list = DATABASE_CONN.get_completed_cards(session["user"]))
     else:
         return redirect(url_for("login"))
 

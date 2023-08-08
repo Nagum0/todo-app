@@ -118,6 +118,33 @@ class DBConn:
         except Exception as e:
             print(e)
 
+    # -- Confirm todo card
+    def confirm_todo_card(self, user: str, card_title: str) -> None:
+        cursor = self.DATABASE.cursor()
+
+        try:
+            query = f"UPDATE {user} SET completed = true WHERE title = %s"
+            cursor.execute(query, (card_title, ))
+            self.DATABASE.commit()
+            cursor.close()
+            print("Card confirmed...")
+        except Exception as e:
+            print(e)
+
+    # -- Returns all of the confirmed cards in a list.
+    def get_completed_cards(self, user: str) -> list:
+        cursor = self.DATABASE.cursor()
+
+        try:
+            query = f"SELECT * FROM {user} WHERE completed = %s"
+            cursor.execute(query, ("1", ))
+            fetched_data = cursor.fetchall()
+            cursor.close()
+            print("Data fetched...")
+
+            return fetched_data
+        except Exception as e:
+            print(e)
     
 if __name__ == "__main__":
     DATABASE_CONN = DBConn("bhwkpirbrqy17bkaclxz-mysql.services.clever-cloud.com", "ujfecpzghum2bsdt", "qGxkGCeUQbz1YNgzg80K", "bhwkpirbrqy17bkaclxz")

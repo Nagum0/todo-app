@@ -18,14 +18,14 @@ document.addEventListener("DOMContentLoaded", () => {
             // --------------------------- #
             const card_title = card.querySelector(".card-body").querySelector("h5").innerText
             
-            let cmd = { "cmd": "delete", "card_title": card_title }
+            let msg_data = { "cmd": "delete", "card_title": card_title }
 
             fetch("/home", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify(cmd)
+                body: JSON.stringify(msg_data)
             })
             .then((res) => {
                 return res.json()
@@ -38,15 +38,52 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
     // --------------------------- #
-    //          CONFIRM            #
+    //         COMPLETED           #
     //       FUNCTIONALITY         #
     // --------------------------- #
+    const confirm_btns = document.querySelectorAll(".confirm-btn")
+
+    confirm_btns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            const card = btn.closest(".card")
+
+            // --------------------------- #
+            //           BACKEND           #
+            // --------------------------- #
+            const card_title = card.querySelector(".card-body").querySelector("h5").innerText
+            
+            let msg_data = { "cmd": "confirm", "card_title": card_title }
+
+            fetch("/home", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(msg_data)
+            })
+            .then((res) => res.json())
+            .then((data) => {
+                card.remove()
+            })
+            .catch(err => console.log(err))
+        })
+    })
 })
 
-/* Navbar */
+// --------------------------- #
+//           NAVBAR            #
+// --------------------------- #
 const logout_btn = document.getElementById("logoutBtn")
 
 logout_btn.addEventListener("click", () => {
     window.location.href = "/logout"
 })
 
+// --------------------------- #
+//          COMPLETED          #
+// --------------------------- #
+const complete_btn = document.getElementById("completedBtn")
+
+complete_btn.addEventListener("click", () => {
+    window.location.href = "/completed"
+})

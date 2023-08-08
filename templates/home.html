@@ -12,25 +12,35 @@
     <div class="main">
         <!-- Navbar -->
         <nav class="home-nav">
+            <button type="button" class="btn btn-primary icon" id="completedBtn">Completed</button>
             <button type="button" class="btn btn-primary icon" id="logoutBtn">Logout</button>
         </nav>
         
         <!-- Todo cards -->
         <div class="todo-cards">
             {% for i in card_list %}
-                <div class="card" style="width: 18rem; height: 18rem;">
-                    <div class="card-body" style="margin-top: 1rem;">
-                        <h5 class="card-title">{{ i[0] }}</h5>
-                        <p class="card-text">{{ i[1] }}</p>
-                        <button type="button" 
-                                class="btn btn-primary" 
-                                style="margin-top: 4rem;"
-                                id="completedBtn">Completed</button>
-                        <button type="button" 
-                                class="btn btn-danger delete-btn" 
-                                style="margin-top: 4rem;">Delete</button>
+                {% if i[2] != "1" %}
+                    <div class="card" style="width: 18rem; height: 18rem;">
+                        <div class="card-body" style="margin-top: 1rem;">
+                            <h5 class="card-title">{{ i[0] }}</h5>
+                            <p class="card-text">{{ i[1] }}</p>
+
+                            <!-- Confirm button -->
+                            <button type="button" 
+                                    class="btn btn-primary confirm-btn"
+                                    style="margin-top: 4rem;">
+                                    Complete
+                            </button>
+
+                            <!-- Delete button -->
+                            <button type="button" 
+                                    class="btn btn-danger delete-btn" 
+                                    style="margin-top: 4rem;">
+                                    Delete
+                            </button>
+                        </div>
                     </div>
-                </div>
+                {% endif %}
             {% endfor %}
 
             <button type="button" 
