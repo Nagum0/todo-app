@@ -104,7 +104,19 @@ new_card_btn.addEventListener("click", () => {
 
 // Save card
 save_card_btn.addEventListener("click", () => {
-    
+    let card_title = card_title_input.value
+    let card_body = card_body_input.value
+
+    fetch("/home", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ "cmd": "new_card", "card_title": card_title, "card_body":  card_body })
+    })
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+    .catch(err => console.log(err))
 })
 
 // Close add card panel

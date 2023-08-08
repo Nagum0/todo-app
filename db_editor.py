@@ -145,6 +145,18 @@ class DBConn:
             return fetched_data
         except Exception as e:
             print(e)
+
+    def create_new_card(self, user:str, card_title: str, card_body: str) -> None:
+        cursor = self.DATABASE.cursor()
+
+        try:
+            query = f"INSERT INTO {user} (title, body, completed) VALUES (%s, %s, NULL)"
+            cursor.execute(query, (card_title, card_body))
+            self.DATABASE.commit()
+            cursor.close()
+            print("Card created...")
+        except Exception as e:
+            print(e)
     
 if __name__ == "__main__":
     DATABASE_CONN = DBConn("bhwkpirbrqy17bkaclxz-mysql.services.clever-cloud.com", "ujfecpzghum2bsdt", "qGxkGCeUQbz1YNgzg80K", "bhwkpirbrqy17bkaclxz")
