@@ -107,4 +107,7 @@
     left: 0;
 
     margin: 10% 40%;
+
+    display: none;
+    flex-direction: column;
 }

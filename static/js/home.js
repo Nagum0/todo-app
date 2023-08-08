@@ -2,7 +2,6 @@
 //          DOM Loaded         #
 // --------------------------- #
 document.addEventListener("DOMContentLoaded", () => {
-
     // --------------------------- #
     //           DELETE            #
     //       FUNCTIONALITY         #
@@ -94,7 +93,10 @@ const new_card_btn = document.getElementById("newCardBtn")
 new_card_btn.addEventListener("click", () => {
     // FRONTEND
     const main_container = document.getElementById("mainCont")
+    const add_new_card_temp = document.getElementById("addNewCardTemp")
     main_container.style.opacity = 0.5
-    
+    add_new_card_temp.style.display = "flex";
+
+
     // BACKEND
 })
