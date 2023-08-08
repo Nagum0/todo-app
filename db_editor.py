@@ -131,6 +131,20 @@ class DBConn:
         except Exception as e:
             print(e)
 
+    # -- Returns all of the confirmed cards in a list.
+    def get_completed_card(self, user: str) -> list:
+        cursor = self.DATABASE.cursor()
+
+        try:
+            query = f"SELECT * {user} WHERE complete = '1'"
+            cursor.execute(query)
+            fetched_data = cursor.fetchall()
+            cursor.close()
+            print("Data fetched...")
+            
+            return fetched_data
+        except Exception as e:
+            print(e)
     
 if __name__ == "__main__":
     DATABASE_CONN = DBConn("bhwkpirbrqy17bkaclxz-mysql.services.clever-cloud.com", "ujfecpzghum2bsdt", "qGxkGCeUQbz1YNgzg80K", "bhwkpirbrqy17bkaclxz")

@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
 
     // --------------------------- #
-    //          CONFIRM            #
+    //         COMPLETED           #
     //       FUNCTIONALITY         #
     // --------------------------- #
     const confirm_btns = document.querySelectorAll(".confirm-btn")
@@ -81,7 +81,7 @@ logout_btn.addEventListener("click", () => {
 })
 
 // --------------------------- #
-//           CONFIRM           #
+//          COMPLETED          #
 // --------------------------- #
 const complete_btn = document.getElementById("completedBtn")
 

@@ -110,7 +110,10 @@ def home():
 # --------------------------- #
 @app.route("/completed")
 def completed():
-    return "<h1>Completed</h1>"
+    if "user" in session:
+        return render_template("completed.html", completed_card_list = [("Test", "Test body...")])
+    else:
+        return redirect(url_for("login"))
 
 if __name__ == "__main__":
     app.run(debug=True)
