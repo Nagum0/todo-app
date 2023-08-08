@@ -132,16 +132,16 @@ class DBConn:
             print(e)
 
     # -- Returns all of the confirmed cards in a list.
-    def get_completed_card(self, user: str) -> list:
+    def get_completed_cards(self, user: str) -> list:
         cursor = self.DATABASE.cursor()
 
         try:
-            query = f"SELECT * {user} WHERE complete = '1'"
-            cursor.execute(query)
+            query = f"SELECT * FROM {user} WHERE completed = %s"
+            cursor.execute(query, ("1", ))
             fetched_data = cursor.fetchall()
             cursor.close()
             print("Data fetched...")
-            
+
             return fetched_data
         except Exception as e:
             print(e)
