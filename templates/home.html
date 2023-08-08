@@ -22,12 +22,29 @@
                     <div class="card-body" style="margin-top: 1rem;">
                         <h5 class="card-title">{{ i[0] }}</h5>
                         <p class="card-text">{{ i[1] }}</p>
-                        <button type="button" 
-                                class="btn btn-primary confirm-btn" 
-                                style="margin-top: 4rem;">Completed</button>
+
+                        <!-- Confirm button -->
+                        {% if i[2] != "1" %}
+                            <button type="button" 
+                                    class="btn btn-primary confirm-btn"
+                                    style="margin-top: 4rem;">
+                                    Completed
+                            </button>
+                        {% else %}
+                            <button type="button" 
+                                    class="btn btn-primary confirm-btn" 
+                                    style="margin-top: 4rem;"
+                                    disabled>
+                                    Completed
+                            </button>
+                        {% endif %}
+
+                        <!-- Delete button -->
                         <button type="button" 
                                 class="btn btn-danger delete-btn" 
-                                style="margin-top: 4rem;">Delete</button>
+                                style="margin-top: 4rem;">
+                                Delete
+                        </button>
                     </div>
                 </div>
             {% endfor %}

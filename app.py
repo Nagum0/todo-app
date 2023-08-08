@@ -97,7 +97,7 @@ def home():
             elif data["cmd"] == "confirm":
                 DATABASE_CONN.confirm_todo_card(session["user"], data["card_title"])
                 session["card_data"] = DATABASE_CONN.get_table_data(session["user"])
-                return jsonify({ "msg": "confirmed" })
+                return jsonify({ "msg": "Confirmed" })
             else:
                 return jsonify({ "msg": "error while requesting" })
         else:

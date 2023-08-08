@@ -62,7 +62,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 body: JSON.stringify(msg_data)
             })
             .then((res) => res.json())
-            .then((data) => console.log(data))
+            .then((data) => {
+                btn.disabled = true
+            })
             .catch(err => console.log(err))
         })
     })
