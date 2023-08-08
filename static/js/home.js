@@ -13,9 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.addEventListener("click", () => {
             const card = btn.closest(".card")
             
-            // --------------------------- #
-            //           BACKEND           #
-            // --------------------------- #
+            // BACKEND           
             const card_title = card.querySelector(".card-body").querySelector("h5").innerText
             
             let msg_data = { "cmd": "delete", "card_title": card_title }
@@ -53,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const card_title = card.querySelector(".card-body").querySelector("h5").innerText
             
             let msg_data = { "cmd": "confirm", "card_title": card_title }
-
+			
             fetch("/home", {
                 method: "POST",
                 headers: {
@@ -86,4 +84,15 @@ const complete_btn = document.getElementById("completedBtn")
 
 complete_btn.addEventListener("click", () => {
     window.location.href = "/completed"
+})
+
+// --------------------------- #
+//          NEW CARD           #
+// --------------------------- #
+const new_card_btn = document.getElementById("newCardBtn")
+
+new_card_btn.addEventListener("click", () => {
+    // FRONTEND
+
+    // BACKEND
 })
