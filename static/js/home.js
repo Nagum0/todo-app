@@ -64,6 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
             .then((res) => res.json())
             .then((data) => {
                 btn.disabled = true
+                btn.innerText = "Completed"
             })
             .catch(err => console.log(err))
         })
