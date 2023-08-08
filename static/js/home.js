@@ -93,6 +93,8 @@ const new_card_btn = document.getElementById("newCardBtn")
 
 new_card_btn.addEventListener("click", () => {
     // FRONTEND
-
+    const main_container = document.getElementById("mainCont")
+    main_container.style.opacity = 0.5
+    
     // BACKEND
 })

@@ -9,7 +9,7 @@
     <title>Home</title>
 </head>
 <body>
-    <div class="main">
+    <div class="main" id="mainCont">
         <!-- Navbar -->
         <nav class="home-nav">
             <button type="button" class="btn btn-primary icon" id="completedBtn">Completed</button>
@@ -51,6 +51,11 @@
                     NEW CARD <br> +
             </button>
         </div>
+    </div>
+
+    <!-- New card popup -->
+    <div class="add_new_card">
+        
     </div>
 
     <script src="{{ url_for('static', filename='js/home.js') }}" defer></script>
