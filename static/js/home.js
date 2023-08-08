@@ -89,14 +89,26 @@ complete_btn.addEventListener("click", () => {
 //          NEW CARD           #
 // --------------------------- #
 const new_card_btn = document.getElementById("newCardBtn")
+const main_container = document.getElementById("mainCont")
+const add_new_card_temp = document.getElementById("addNewCardTemp")
+const save_card_btn = document.getElementById("saveCardBtn")
+const close_panel_btn = document.getElementById("closeCardBtn")
+const card_body_input = document.getElementById("cardBodyInput")
+const card_title_input = document.getElementById("cardTitleInput")
 
+// Open new card panel
 new_card_btn.addEventListener("click", () => {
-    // FRONTEND
-    const main_container = document.getElementById("mainCont")
-    const add_new_card_temp = document.getElementById("addNewCardTemp")
     main_container.style.opacity = 0.5
     add_new_card_temp.style.display = "flex";
+})
 
+// Save card
+save_card_btn.addEventListener("click", () => {
+    
+})
 
-    // BACKEND
+// Close add card panel
+close_panel_btn.addEventListener("click", () => {
+    main_container.style.opacity = 1
+    add_new_card_temp.style.display = "none"
 })
