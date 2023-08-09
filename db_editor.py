@@ -94,13 +94,13 @@ class DBConn:
         cursor = self.DATABASE.cursor()
         cursor.execute("SELECT * FROM Users WHERE userName = %s", (user, ))
         data = cursor.fetchall()
-        print(data)
         cursor.close()
 
         data_dict = {
             "user": data[0][0],
             "password": "********",
-            "email": data[0][2]
+            "email": data[0][2],
+            "type": data[0][3]
         }
 
         return data_dict

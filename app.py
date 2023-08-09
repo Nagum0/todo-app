@@ -90,6 +90,7 @@ def home():
     if "user" in session:
         DATABASE_CONN.create_conn()
         session["card_data"] = DATABASE_CONN.get_table_data(session["user"])
+        print(DATABASE_CONN.get_user_info(session["user"]))
 
         # On POST request
         if request.method == "POST":
