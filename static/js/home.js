@@ -1,3 +1,24 @@
+// Sends POST request to server
+function httpPost(url, body) {
+    fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(body)
+    })
+    .then((res) => {
+        if (res.redirected) {
+            window.location.href = res.url
+        }
+        else {
+            res.json()
+        }
+    })
+    .then((data) => {})
+    .catch(err => console.log(err))
+}
+
 // --------------------------- #
 //          DOM Loaded         #
 // --------------------------- #
@@ -10,24 +31,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     delete_btns.forEach((btn) => {
         btn.addEventListener("click", () => {
-            const card = btn.closest(".card")
-            
-            // BACKEND           
+            const card = btn.closest(".card")          
             const card_title = card.querySelector(".card-body").querySelector("h5").innerText
             
-            let msg_data = { "cmd": "delete", "card_title": card_title }
-
-            fetch("/home", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(msg_data)
-            })
-            .then((res) => {
-                return res.json()
-            })
-            .catch(err => console.log(err))
+            // Post request
+            httpPost("/home", { "cmd": "delete", "card_title": card_title })
 
             // Remove the card
             card.remove()
@@ -43,26 +51,12 @@ document.addEventListener("DOMContentLoaded", () => {
     confirm_btns.forEach((btn) => {
         btn.addEventListener("click", () => {
             const card = btn.closest(".card")
-
-            // --------------------------- #
-            //           BACKEND           #
-            // --------------------------- #
             const card_title = card.querySelector(".card-body").querySelector("h5").innerText
             
-            let msg_data = { "cmd": "confirm", "card_title": card_title }
-			
-            fetch("/home", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(msg_data)
-            })
-            .then((res) => res.json())
-            .then((data) => {
-                card.remove()
-            })
-            .catch(err => console.log(err))
+            // Post request
+            httpPost("/home", { "cmd": "confirm", "card_title": card_title })
+
+            card.remove()
         })
     })
 })
@@ -107,23 +101,8 @@ save_card_btn.addEventListener("click", () => {
     let card_title = card_title_input.value
     let card_body = card_body_input.value
 
-    fetch("/home", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ "cmd": "new_card", "card_title": card_title, "card_body":  card_body })
-    })
-    .then((res) => {
-        if (res.redirected) {
-            window.location.href = res.url
-        }
-        else {
-            res.json()
-        }
-    })
-    .then((data) => console.log(data))
-    .catch(err => console.log(err))
+    // Post request
+    httpPost("/home", { "cmd": "new_card", "card_title": card_title, "card_body":  card_body })
 
     main_container.style.opacity = 1
     add_new_card_temp.style.display = "none";
