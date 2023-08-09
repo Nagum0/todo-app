@@ -142,9 +142,9 @@ def completed():
 @app.route("/admin")
 def admin():
     if "user" in session:
-        return f"<h1>Admin: {session['user']}</h1>"
+        return render_template("admin.html", session=session)
     else:
-        redirect(url_for("login"))
+        return redirect(url_for("login"))
 
 if __name__ == "__main__":
     app.run(debug=True)
