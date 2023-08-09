@@ -2,7 +2,13 @@ from flask import Flask, render_template, url_for, request, json, jsonify, redir
 from db_editor import DBConn
 
 # -- MYSQL CONNECTION
-DATABASE_CONN = DBConn("benezeki.mysql.pythonanywhere-services.com", "benezeki", "todoAppDB", "benezeki$main")
+#DATABASE_CONN = DBConn("benezeki.mysql.pythonanywhere-services.com", "benezeki", "todoAppDB", "benezeki$main")
+DATABASE_CONN = DBConn(
+    "bhwkpirbrqy17bkaclxz-mysql.services.clever-cloud.com",
+    "ujfecpzghum2bsdt",
+    "qGxkGCeUQbz1YNgzg80K",
+    "bhwkpirbrqy17bkaclxz"
+)
 
 # -- App setup
 app = Flask(__name__)
