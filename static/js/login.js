@@ -6,17 +6,12 @@ login_btn.addEventListener("click", () => {
     const password_input = document.getElementById("passwordInput").value
     const error_msg_p = document.getElementById("errorMsgP")
 
-    let login_data = {
-        "user": username_input,
-        "password": password_input
-    }
-
     fetch("/login", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(login_data)
+        body: JSON.stringify({ "user": username_input, "password": password_input })
     })
     .then((res) => {
         if (res.redirected) {
