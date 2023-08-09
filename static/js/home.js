@@ -23,6 +23,21 @@ function httpPost(url, body) {
 //          DOM Loaded         #
 // --------------------------- #
 document.addEventListener("DOMContentLoaded", () => {
+    // Send POST to check if user is admin.
+    fetch("/home", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ "cmd": "check_admin" })
+    }).then((res) => {
+        return res.json()
+    }).then((data) => {
+        if (data.msg == "isadmin") {
+            
+        }
+    }).catch(err => console.log(err))
+
     // --------------------------- #
     //           DELETE            #
     //       FUNCTIONALITY         #

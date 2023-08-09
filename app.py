@@ -40,6 +40,7 @@ def login():
             if DATABASE_CONN.check_login(data["user"], data["password"]):
                 session["user"] = data["user"]
                 session["card_data"] = DATABASE_CONN.get_table_data(data["user"])
+                session["user_type"] = DATABASE_CONN.get_user_info(data["user"])["type"]
 
                 return redirect(url_for("home"))
             else:
@@ -90,11 +91,17 @@ def home():
     if "user" in session:
         DATABASE_CONN.create_conn()
         session["card_data"] = DATABASE_CONN.get_table_data(session["user"])
-        print(DATABASE_CONN.get_user_info(session["user"]))
 
         # On POST request
         if request.method == "POST":
             data = request.get_json()
+
+            # Check if user is admin. If they are send this data to frontend to update the home UI.
+            if data["cmd"] == "check_admin":
+                if session["user_type"] == "admin":
+                    return jsonify({ "msg": "isadmin" })
+                else:
+                    return jsonify({ "msg": "notadmin" })
 
             # Delete functionality
             if data["cmd"] == "delete":
