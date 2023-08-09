@@ -23,7 +23,12 @@ function httpPost(url, body) {
 //          DOM Loaded         #
 // --------------------------- #
 document.addEventListener("DOMContentLoaded", () => {
+    // --------------------------- #
+    //            ADMIN            #
+    // --------------------------- #
     // Send POST to check if user is admin.
+    const admin_page_btn = document.getElementById("adminBtn")
+
     fetch("/home", {
         method: "POST",
         headers: {
@@ -34,9 +39,17 @@ document.addEventListener("DOMContentLoaded", () => {
         return res.json()
     }).then((data) => {
         if (data.msg == "isadmin") {
-            
+            admin_page_btn.hidden = false
+        }
+        else {
+            admin_page_btn.hidden = true
         }
     }).catch(err => console.log(err))
+
+    // Redirect to /admin.
+    admin_page_btn.addEventListener("click", () => {
+        window.location.href = "/admin"
+    })
 
     // --------------------------- #
     //           DELETE            #

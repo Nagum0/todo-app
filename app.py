@@ -136,5 +136,15 @@ def completed():
     else:
         return redirect(url_for("login"))
 
+# --------------------------- #
+#            ADMIN            #
+# --------------------------- #
+@app.route("/admin")
+def admin():
+    if "user" in session:
+        return f"<h1>Admin: {session['user']}</h1>"
+    else:
+        redirect(url_for("login"))
+
 if __name__ == "__main__":
     app.run(debug=True)
