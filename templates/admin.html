@@ -19,8 +19,29 @@
 
         <!-- Main -->
         <div class="admin_window">
-            <div class="sql_editor"></div>
-            <div class="sql_output"></div>
+            <!-- Sql editor -->
+            <div class="sql_editor">
+                <!-- Sql query input -->
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Query</span>
+                    </div>
+                    <input type="text" 
+                           class="form-control" 
+                           placeholder="Query..." 
+                           aria-label="Username" 
+                           aria-describedby="basic-addon1"
+                           id="tableInput">
+                </div>
+                
+                <!-- Query btn -->
+                <button type="button" class="btn btn-primary icon" id="queryBtn">Query</button>
+            </div>
+
+            <!-- Sql output -->
+            <div class="sql_output">
+                <p class="returned_data" id="returnedData">[('userName=astolfo', 'email=weffjwebniwe')]</p>
+            </div>
         </div>
     </div>
 

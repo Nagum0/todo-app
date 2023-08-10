@@ -127,17 +127,28 @@
 
     width: 100%;
 
-    border: 1px solid black;
+    border: 1px solid rgb(180, 180, 180);
+    border-radius: 5px;
 }
 
 .sql_editor {
-    height: 300px;
+    height: 150px;
     width: 100%;
 
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid rgb(180, 180, 180);
+
+    padding: 25px 25px;
 }
 
 .sql_output {
     height: 500px;
     width: 100%;
+
+    padding: 25px 25px;
+}
+
+.returned_data {
+    width: 100%;
+    font-size: 25px;
+    border-bottom: 1px solid black;
 }
