@@ -111,3 +111,33 @@
     display: none;
     flex-direction: column;
 }
+
+.admin_wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.admin_window {
+    display: flex;
+    flex-direction: column;
+
+    margin-left: 10%;
+    margin-right: 5%;
+    margin-top: 3%;
+
+    width: 100%;
+
+    border: 1px solid black;
+}
+
+.sql_editor {
+    height: 300px;
+    width: 100%;
+
+    border-bottom: 1px solid black;
+}
+
+.sql_output {
+    height: 500px;
+    width: 100%;
+}

@@ -9,7 +9,21 @@
     <title>Admin</title>
 </head>
 <body>
-    <h1>Admin: {{ session.user }}</h1>
+    <div class="admin_wrapper">
+        <!-- Nav -->
+        <nav class="home-nav">
+            <button type="button" class="btn btn-primary icon" id="homeBtn">Home</button>
+            <button type="button" class="btn btn-primary icon" id="completedBtn">Completed</button>
+            <button type="button" class="btn btn-primary icon" id="logoutBtn">Logout</button>
+        </nav>
+
+        <!-- Main -->
+        <div class="admin_window">
+            <div class="sql_editor"></div>
+            <div class="sql_output"></div>
+        </div>
+    </div>
+
     <script src="{{ url_for('static', filename='js/admin.js') }}" defer></script>
 </body>
 </html>
