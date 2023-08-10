@@ -27,7 +27,13 @@ logout_btn.addEventListener("click", () => {
 // --------------------------- #
 
 // Functions
-function fetchData(body) {
+function createOutput(text) {
+    /* 
+        Create p tag for each row that you got from the database.
+    */
+}
+
+function fetchData(q_type, body) {
     fetch("/admin", {
         method: "POST",
         headers: {
@@ -37,12 +43,20 @@ function fetchData(body) {
     }).then((res) => {
         return res.json()
     }).then((data) => {
-        console.log(data)
+        
+        // SELECT query
+        if (q_type == "SELECT") {
+            console.log(data)
+        }
+        else {
+            console.log("Unknown query...")
+        }
+
     }).catch(err => console.log(`Error => ${err}`))
 }
 
 function querySelect(query) {
-    fetchData({ "q_type": "SELECT", "query": query })
+    fetchData("SELECT", { "q_type": "SELECT", "query": query })
 }
 
 // App

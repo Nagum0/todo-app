@@ -142,13 +142,16 @@ def completed():
 @app.route("/admin", methods=["GET", "POST"])
 def admin():
     if "user" in session:
+        # Connect to DB
+        DATABASE_CONN.create_conn()
+
         # On POST request
         if request.method == "POST":
             data = request.get_json()
             
+            # SELECT query
             if data["q_type"] == "SELECT":
-                print(data)
-                return jsonify({ "msg": "received" })
+                return jsonify({ "msg": DATABASE_CONN.select_query(data["query"]) })
         else:
             return render_template("admin.html", session=session)
     else:

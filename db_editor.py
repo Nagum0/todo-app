@@ -146,6 +146,7 @@ class DBConn:
         except Exception as e:
             print(e)
 
+    # -- Creates new card
     def create_new_card(self, user:str, card_title: str, card_body: str) -> None:
         cursor = self.DATABASE.cursor()
 
@@ -155,5 +156,18 @@ class DBConn:
             self.DATABASE.commit()
             cursor.close()
             print("Card created...")
+        except Exception as e:
+            print(e)
+
+    # -- SELECT query for admin
+    def select_query(self, query: str) -> list:
+        cursor = self.DATABASE.cursor()
+
+        try:
+            cursor.execute(query)
+            return_data = cursor.fetchall()
+            cursor.close()
+
+            return return_data
         except Exception as e:
             print(e)
