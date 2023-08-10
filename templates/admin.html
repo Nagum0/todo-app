@@ -21,6 +21,19 @@
         <div class="admin_window">
             <!-- Sql editor -->
             <div class="sql_editor">
+                <!-- Sql query type -->
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">Type</span>
+                    </div>
+                    <input type="text" 
+                           class="form-control" 
+                           placeholder="Query type..." 
+                           aria-label="Username" 
+                           aria-describedby="basic-addon1"
+                           id="queryTypeInput">
+                </div>
+
                 <!-- Sql query input -->
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -31,7 +44,7 @@
                            placeholder="Query..." 
                            aria-label="Username" 
                            aria-describedby="basic-addon1"
-                           id="tableInput">
+                           id="queryInput">
                 </div>
                 
                 <!-- Query btn -->
