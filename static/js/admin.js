@@ -28,9 +28,13 @@ logout_btn.addEventListener("click", () => {
 
 // Functions
 function createOutput(text) {
-    /* 
-        Create p tag for each row that you got from the database.
-    */
+    const sql_output = document.getElementById("sqlOutput")
+
+    const output_msg = document.createElement("p")
+    output_msg.innerText = text
+    output_msg.classList.add("returned_data")
+
+    sql_output.appendChild(output_msg)
 }
 
 function fetchData(q_type, body) {
@@ -46,7 +50,9 @@ function fetchData(q_type, body) {
         
         // SELECT query
         if (q_type == "SELECT") {
-            console.log(data)
+            data["msg"].forEach(element => {
+                createOutput(element)
+            });
         }
         else {
             console.log("Unknown query...")
