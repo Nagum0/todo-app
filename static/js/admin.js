@@ -26,10 +26,12 @@ logout_btn.addEventListener("click", () => {
 //            MAIN             #
 // --------------------------- #
 
-// Functions
-function createOutput(text) {
-    const sql_output = document.getElementById("sqlOutput")
+// Sql output div element.
+const sql_output = document.getElementById("sqlOutput")
 
+// Functions
+// Creates output p tag that will hold the returned info.
+function createOutput(text) {
     const output_msg = document.createElement("p")
     output_msg.innerText = text
     output_msg.classList.add("returned_data")
@@ -37,6 +39,7 @@ function createOutput(text) {
     sql_output.appendChild(output_msg)
 }
 
+// Fetches data from the server.
 function fetchData(q_type, body) {
     fetch("/admin", {
         method: "POST",
@@ -61,11 +64,13 @@ function fetchData(q_type, body) {
     }).catch(err => console.log(`Error => ${err}`))
 }
 
+// SELECT query function.
 function querySelect(query) {
     fetchData("SELECT", { "q_type": "SELECT", "query": query })
 }
 
 // App
+// Query btn.
 const query_btn = document.getElementById("queryBtn")
 
 query_btn.addEventListener("click", () => {
@@ -78,5 +83,14 @@ query_btn.addEventListener("click", () => {
     }
     else {
         console.log("Unknown command. Check your MySQL syntax.")
+    }
+})
+
+// Clear output btn.
+const clear_output = document.getElementById("clearOutputBtn")
+
+clear_output.addEventListener("click", () => {
+    while (sql_output.firstChild) {
+        sql_output.removeChild(sql_output.firstChild)
     }
 })
