@@ -1,13 +1,20 @@
 from flask import Flask, render_template, url_for, request, json, jsonify, redirect, session
 from db_editor import DBConn
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+HOST = os.getenv("HOST")
+USER = os.getenv("USER")
+PASSWORD = os.getenv("PASSWORD")
+DB_NAME = os.getenv("DB_NAME")
 
 # -- MYSQL CONNECTION
-#DATABASE_CONN = DBConn("benezeki.mysql.pythonanywhere-services.com", "benezeki", "todoAppDB", "benezeki$main")
 DATABASE_CONN = DBConn(
-    "bhwkpirbrqy17bkaclxz-mysql.services.clever-cloud.com",
-    "ujfecpzghum2bsdt",
-    "qGxkGCeUQbz1YNgzg80K",
-    "bhwkpirbrqy17bkaclxz"
+    HOST,
+    USER,
+    PASSWORD,
+    DB_NAME
 )
 
 # -- App setup
